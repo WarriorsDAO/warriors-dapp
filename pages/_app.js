@@ -93,8 +93,8 @@ const MyApp = ({ Component, pageProps }) => {
 
 	useEffect(() => {
 		if (warriorCore?.address && address) {
-			getUserHolding(address);
-			getAllWarriors();
+			// getUserHolding(address);
+			// getAllWarriors();
 			// getAllAssets();
 		}
 	}, [warriorCore, address]);
