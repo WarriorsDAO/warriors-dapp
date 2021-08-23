@@ -6,13 +6,11 @@ import queryEvents from '../../ethereum/utils/queryEvents';
 import { StatesContext } from '@/components/StatesContext';
 import Text from '@/components/Text';
 import useRegistry from '@/components/hooks/useRegistry';
-
-const PER_PAGE = 15;
+import ReactTooltip from 'react-tooltip';
 
 const AllWarrior = (): JSX.Element => {
 	const state = useContext(StatesContext);
 	const [warriors, setWarriors] = useState([]);
-	const [page, setPage] = useState(0);
 	const registry = useRegistry();
 	useEffect(() => {
 		if (process.browser) {
@@ -87,10 +85,19 @@ const AllWarrior = (): JSX.Element => {
 							<Box position="absolute" right="ml">
 								<Text>#{warrior.id}</Text>
 							</Box>
-							<Box position="relative" top={{ mobS: '23.7rem', tabL: '28.5rem' }} center>
+							<Box
+								position="relative"
+								top={{ mobS: '23.7rem', tabL: '28.5rem' }}
+								center
+								data-tip
+								data-for="registerTip"
+							>
 								<Text fontSize={{ mobs: '0.75rem', deskM: '0.75rem' }} fontWeight="extra-bold">
 									{warrior.address}
 								</Text>
+								<ReactTooltip id="registerTip" place="top" effect="solid">
+									Creator Address
+								</ReactTooltip>
 							</Box>
 						</Box>
 					</Box>
